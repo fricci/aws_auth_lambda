@@ -1,6 +1,16 @@
-import { APIGatewayTokenAuthorizerEvent, APIGatewayAuthorizerResult, MaybeStatementResource, ConditionBlock, Statement } from "aws-lambda";
+import {
+  APIGatewayTokenAuthorizerEvent,
+  APIGatewayAuthorizerResult,
+  MaybeStatementResource,
+  ConditionBlock,
+  Statement,
+} from "aws-lambda";
 
-export async function handler(event: APIGatewayTokenAuthorizerEvent): Promise<APIGatewayAuthorizerResult> {
+export async function handler(
+  event: APIGatewayTokenAuthorizerEvent
+): Promise<APIGatewayAuthorizerResult> {
+  console.log(event.authorizationToken);
+
   if (process.env.IDP_DEV_MODE) {
     process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
   }
@@ -117,7 +127,9 @@ class AuthPolicy {
    *                  properties prepopulated.
    */
   public getEmptyStatement(effect: string): Statement {
-    effect = effect.substring(0, 1).toUpperCase() + effect.substring(1, effect.length).toLowerCase();
+    effect =
+      effect.substring(0, 1).toUpperCase() +
+      effect.substring(1, effect.length).toLowerCase();
     const statement: Statement = {
       Action: "execute-api:Invoke",
       Effect: effect,
@@ -127,9 +139,19 @@ class AuthPolicy {
     return statement;
   }
 
-  public addMethod(effect: "allow" | "deny", verb: HttpVerb, resource: string, conditions: ConditionBlock): void {
+  public addMethod(
+    effect: "allow" | "deny",
+    verb: HttpVerb,
+    resource: string,
+    conditions: ConditionBlock
+  ): void {
     if (!this.pathRegex.test(resource)) {
-      throw new Error("Invalid resource path: " + resource + ". Path should match " + this.pathRegex);
+      throw new Error(
+        "Invalid resource path: " +
+          resource +
+          ". Path should match " +
+          this.pathRegex
+      );
     }
 
     var cleanedResource = resource;
@@ -137,7 +159,18 @@ class AuthPolicy {
       cleanedResource = resource.substring(1, resource.length);
     }
     var resourceArn =
-      "arn:aws:execute-api:" + this.region + ":" + this.awsAccountId + ":" + this.restApiId + "/" + this.stage + "/" + verb + "/" + cleanedResource;
+      "arn:aws:execute-api:" +
+      this.region +
+      ":" +
+      this.awsAccountId +
+      ":" +
+      this.restApiId +
+      "/" +
+      this.stage +
+      "/" +
+      verb +
+      "/" +
+      cleanedResource;
 
     if (effect.toLowerCase() == "allow") {
       this.allowMethods.push({
@@ -170,17 +203,27 @@ class AuthPolicy {
 
       for (let i = 0; i < methods.length; i++) {
         const curMethod: MethodConfig = methods[i];
-        if (curMethod.conditions === null || Object.keys(curMethod.conditions).length === 0) {
-          (<string[]>(<MaybeStatementResource>statement).Resource).push(curMethod.resourceArn);
+        if (
+          curMethod.conditions === null ||
+          Object.keys(curMethod.conditions).length === 0
+        ) {
+          (<string[]>(<MaybeStatementResource>statement).Resource).push(
+            curMethod.resourceArn
+          );
         } else {
           const conditionalStatement = this.getEmptyStatement(effect);
-          (<string[]>(<MaybeStatementResource>statement).Resource).push(curMethod.resourceArn);
+          (<string[]>(<MaybeStatementResource>statement).Resource).push(
+            curMethod.resourceArn
+          );
           conditionalStatement.Condition = curMethod.conditions;
           statements.push(conditionalStatement);
         }
       }
 
-      if ((<MaybeStatementResource>statement).Resource !== null && (<MaybeStatementResource>statement).Resource.length > 0) {
+      if (
+        (<MaybeStatementResource>statement).Resource !== null &&
+        (<MaybeStatementResource>statement).Resource.length > 0
+      ) {
         statements.push(statement);
       }
     }
@@ -246,7 +289,11 @@ class AuthPolicy {
    * @param {Object} The conditions object in the format specified by the AWS docs
    * @return {void}
    */
-  public allowMethodWithConditions(verb: HttpVerb, resource: string, conditions: ConditionBlock) {
+  public allowMethodWithConditions(
+    verb: HttpVerb,
+    resource: string,
+    conditions: ConditionBlock
+  ) {
     this.addMethod("allow", verb, resource, conditions);
   }
 
@@ -262,7 +309,11 @@ class AuthPolicy {
    * @param {Object} The conditions object in the format specified by the AWS docs
    * @return {void}
    */
-  public denyMethodWithConditions(verb: HttpVerb, resource: string, conditions: ConditionBlock): void {
+  public denyMethodWithConditions(
+    verb: HttpVerb,
+    resource: string,
+    conditions: ConditionBlock
+  ): void {
     this.addMethod("deny", verb, resource, conditions);
   }
 
@@ -276,14 +327,21 @@ class AuthPolicy {
    * @return {Object} The policy object that can be serialized to JSON.
    */
   build(): APIGatewayAuthorizerResult {
-    if ((!this.allowMethods || this.allowMethods.length === 0) && (!this.denyMethods || this.denyMethods.length === 0)) {
+    if (
+      (!this.allowMethods || this.allowMethods.length === 0) &&
+      (!this.denyMethods || this.denyMethods.length === 0)
+    ) {
       throw new Error("No statements defined for the policy");
     }
 
     let statement: Statement[] = [];
 
-    statement = statement.concat(this.getStatementsForEffect("Allow", this.allowMethods));
-    statement = statement.concat(this.getStatementsForEffect("Deny", this.denyMethods));
+    statement = statement.concat(
+      this.getStatementsForEffect("Allow", this.allowMethods)
+    );
+    statement = statement.concat(
+      this.getStatementsForEffect("Deny", this.denyMethods)
+    );
 
     const policy: APIGatewayAuthorizerResult = {
       principalId: this.principalId,
