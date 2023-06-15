@@ -1,0 +1,45 @@
+{
+    "version": "2.0",
+    "type": "REQUEST",
+    "routeArn": "arn:aws:execute-api:eu-central-1:606743733838:9e201bs3b6/$default/GET/GetStartedLambdaProxyIntegration",
+    "identitySource": [
+      "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJqZk1abmJVWXl5VXVzRWZrUG8tR0xQMWdtN0ZXLVdzNE15UE9IY19jejNzIn0.eyJleHAiOjE2ODQ1MTA3MzYsImlhdCI6MTY4NDUxMDY3NiwiYXV0aF90aW1lIjoxNjg0NTEwNjU1LCJqdGkiOiJhMGRhNTY2Ny0xMjk0LTQ0NDItYjNmYS0zNTllYWM1NGYzZjEiLCJpc3MiOiJodHRwczovLzU0LjkzLjE3MC4xMzM6ODQ0My9yZWFsbXMvbWFzdGVyIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6IjJmY2ZlNDdjLTBlMGItNGY0ZC04MTVkLTljNWJjMzNlZjc4MyIsInR5cCI6IkJlYXJlciIsImF6cCI6ImFjY291bnQtY29uc29sZSIsIm5vbmNlIjoiNTNlNzI2NzYtMTE1Ny00YzBhLThiNGQtYTdmZTMxN2Y3MTI1Iiwic2Vzc2lvbl9zdGF0ZSI6IjVhYzFkNDM2LWNhMGYtNGZmNi04YWI4LWQ5MDMzMmMxMmVjMSIsImFjciI6IjAiLCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIl19fSwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInNpZCI6IjVhYzFkNDM2LWNhMGYtNGZmNi04YWI4LWQ5MDMzMmMxMmVjMSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlciJ9.qHC4a6GNJWqj9XMHMHJVkJchQ19aFYNlDe29B2x2XKbCPvQck9mN8Twr9INiGJe4FEnEB2AXpnCliwD3aYeltPmns9DOC1Vr9ixZ2AjqfOoJlPt7eRKBpnwaQfXwqwdedZMYyZVIT0jGX_V8khKHn0mh1pJpF3VJ0fJmdA0EfFHQR01Y80FPciAMMJ2ooSH7EdI68RMN7GwEOqr2FRgSmWz8ZD_Eih7Y_Xf0dHTqvnpSjZyxFrf5v-8QJi7Vjhlp8qetLixhU83gwEOSETqva5xhnoUaBzD0gA7eFTTf8ROGVe6vRMdnffoYsbCPZ3Adp6EPXQksLuugbL6pTXeHDw"
+    ],
+    "routeKey": "ANY /GetStartedLambdaProxyIntegration",
+    "rawPath": "/GetStartedLambdaProxyIntegration",
+    "rawQueryString": "",
+    "headers": {
+      "accept": "*/*",
+      "accept-encoding": "gzip, deflate, br",
+      "authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJqZk1abmJVWXl5VXVzRWZrUG8tR0xQMWdtN0ZXLVdzNE15UE9IY19jejNzIn0.eyJleHAiOjE2ODQ1MTA3MzYsImlhdCI6MTY4NDUxMDY3NiwiYXV0aF90aW1lIjoxNjg0NTEwNjU1LCJqdGkiOiJhMGRhNTY2Ny0xMjk0LTQ0NDItYjNmYS0zNTllYWM1NGYzZjEiLCJpc3MiOiJodHRwczovLzU0LjkzLjE3MC4xMzM6ODQ0My9yZWFsbXMvbWFzdGVyIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6IjJmY2ZlNDdjLTBlMGItNGY0ZC04MTVkLTljNWJjMzNlZjc4MyIsInR5cCI6IkJlYXJlciIsImF6cCI6ImFjY291bnQtY29uc29sZSIsIm5vbmNlIjoiNTNlNzI2NzYtMTE1Ny00YzBhLThiNGQtYTdmZTMxN2Y3MTI1Iiwic2Vzc2lvbl9zdGF0ZSI6IjVhYzFkNDM2LWNhMGYtNGZmNi04YWI4LWQ5MDMzMmMxMmVjMSIsImFjciI6IjAiLCJyZXNvdXJjZV9hY2Nlc3MiOnsiYWNjb3VudCI6eyJyb2xlcyI6WyJtYW5hZ2UtYWNjb3VudCIsIm1hbmFnZS1hY2NvdW50LWxpbmtzIl19fSwic2NvcGUiOiJvcGVuaWQgcHJvZmlsZSBlbWFpbCIsInNpZCI6IjVhYzFkNDM2LWNhMGYtNGZmNi04YWI4LWQ5MDMzMmMxMmVjMSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwicHJlZmVycmVkX3VzZXJuYW1lIjoidXNlciJ9.qHC4a6GNJWqj9XMHMHJVkJchQ19aFYNlDe29B2x2XKbCPvQck9mN8Twr9INiGJe4FEnEB2AXpnCliwD3aYeltPmns9DOC1Vr9ixZ2AjqfOoJlPt7eRKBpnwaQfXwqwdedZMYyZVIT0jGX_V8khKHn0mh1pJpF3VJ0fJmdA0EfFHQR01Y80FPciAMMJ2ooSH7EdI68RMN7GwEOqr2FRgSmWz8ZD_Eih7Y_Xf0dHTqvnpSjZyxFrf5v-8QJi7Vjhlp8qetLixhU83gwEOSETqva5xhnoUaBzD0gA7eFTTf8ROGVe6vRMdnffoYsbCPZ3Adp6EPXQksLuugbL6pTXeHDw",
+      "content-length": "0",
+      "host": "9e201bs3b6.execute-api.eu-central-1.amazonaws.com",
+      "postman-token": "406589d9-07d6-4aa7-aa3b-a3f01915c680",
+      "user-agent": "PostmanRuntime/7.32.2",
+      "x-amzn-trace-id": "Root=1-646f37ef-3deba30668ee79475e2509e6",
+      "x-forwarded-for": "31.46.227.134",
+      "x-forwarded-port": "443",
+      "x-forwarded-proto": "https"
+    },
+    "queryStringParameters": {
+      "role": "manage-account"
+    },
+    "requestContext": {
+      "accountId": "606743733838",
+      "apiId": "9e201bs3b6",
+      "domainName": "9e201bs3b6.execute-api.eu-central-1.amazonaws.com",
+      "domainPrefix": "9e201bs3b6",
+      "http": {
+        "method": "GET",
+        "path": "/GetStartedLambdaProxyIntegration",
+        "protocol": "HTTP/1.1",
+        "sourceIp": "31.46.227.134",
+        "userAgent": "PostmanRuntime/7.32.2"
+      },
+      "requestId": "FeWtZix3liAEMkQ=",
+      "routeKey": "ANY /GetStartedLambdaProxyIntegration",
+      "stage": "$default",
+      "time": "25/May/2023:10:26:55 +0000",
+      "timeEpoch": 1685010415089
+    }
+  }
